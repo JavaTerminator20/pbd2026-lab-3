@@ -1,3 +1,5 @@
+package si.uni_lj.fri.pbd.pbd2024_lab_3
+
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
