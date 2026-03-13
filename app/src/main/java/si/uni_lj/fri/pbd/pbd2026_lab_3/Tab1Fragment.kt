@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.fragment.app.Fragment
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import java.text.SimpleDateFormat
 import java.util.*
@@ -24,13 +25,19 @@ class Tab1Fragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_tab1, container, false)
 
-
         myListView = view.findViewById(R.id.listView)
         adapter = ArrayAdapter(view.context, android.R.layout.simple_list_item_1, listItems)
         myListView?.adapter = adapter
 
 
         // TODO: Find FloatingActionButton and set the behaviour
+        val fab = view.findViewById<FloatingActionButton>(R.id.fab)
+        fab.setOnClickListener { v ->
+            addListItem()
+            Snackbar.make(v, "Item added to list", Snackbar.LENGTH_LONG)
+                .setAction("Undo", undoOnClickListener).show()
+
+        }
 
         return view
     }
