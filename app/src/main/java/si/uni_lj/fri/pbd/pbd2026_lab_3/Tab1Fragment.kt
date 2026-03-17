@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.fragment.app.Fragment
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import java.text.SimpleDateFormat
 import java.util.*
@@ -31,7 +32,11 @@ class Tab1Fragment : Fragment() {
 
 
         // TODO: Find FloatingActionButton and set the behaviour
-
+        val actionButton : FloatingActionButton = view.findViewById(R.id.fab)
+        actionButton.setOnClickListener{clickedView ->
+            addListItem()
+            Snackbar.make(clickedView, "Item added to list", Snackbar.LENGTH_LONG).setAction("Undo", undoOnClickListener).show()
+        }
         return view
     }
 
@@ -41,6 +46,7 @@ class Tab1Fragment : Fragment() {
         Snackbar.make(view, "Item removed", Snackbar.LENGTH_LONG)
             .setAction("Action", null).show()
     }
+
 
     private fun addListItem() {
         val dateformat = SimpleDateFormat("HH:mm:ss MM/dd/yyyy",
